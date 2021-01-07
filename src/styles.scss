@@ -1,0 +1,167 @@
+$enable-responsive-font-sizes: true;
+
+@import "../node_modules/@mdi/font/scss/materialdesignicons.scss";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+@font-face {
+    font-family: 'Digital Display';
+    src: url('./fonts/Digital-Display.woff2') format('woff2'),
+         url('./fonts/Digital-Display.woff') format('woff'),
+         url('./fonts/Digital-Display.ttf') format('truetype');
+}
+
+#app{
+    @extend .container;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+#display{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#display button{
+    @extend .btn;
+    @extend .btn-danger;
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+#col-1 , #col-2{
+    flex-basis: 50%;
+    max-width: 400px;
+    margin: 10px;
+}
+
+#col-1 div:nth-child(odd){
+    background-color: hsla(0, 0%, 90%, 0.6);
+}
+
+#col-1 div:first-child{
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+#section h4, #break h4, #times h4{
+    text-align: center;
+}
+
+#section div, #break div, #times div{
+    display: flex;
+    justify-content: space-between;
+}
+
+#section div p, #break div p, #times div p{
+    font-size: 1.5rem;
+    margin: auto;
+}
+
+#display button:first-child, #display button:first-child, #display button:first-child{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+#display button:last-child, #display button:last-child, #display button:last-child{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+#col-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+@keyframes blink-timer{
+    0%{
+        color: #212529;
+        opacity: 1;
+    }
+    0.1%{
+        color: #dc3545 ;
+    }
+    100%{
+        color: #dc3545 ;
+        opacity: 0;
+    }
+}
+
+#col-2 h5{
+    transition-property: background-color color;
+    transition-duration: 1s;
+}
+
+#timer{
+    display: flex;
+    justify-content: center;
+    font-family: "Digital Display", arial;
+    color: #343a40;
+    animation-name: blink-timer;
+    animation-duration: 500ms;
+    animation-iteration-count: 0;
+    animation-direction: alternate;
+}
+
+#timer p{
+    margin: 0px;
+}
+
+#timer p:first-child{
+    font-size: 5.3rem;
+}
+
+#timer p:last-child{
+    font-size: 2.3rem;
+    padding-top: 3.3rem;
+    width: 3rem;
+}
+
+#control{
+    display: flex;
+    justify-content: space-between;
+}
+
+#control button{
+    flex-basis: 33.33%;
+}
+
+@include media-breakpoint-only(xs) { 
+    #display{
+        flex-direction: column-reverse;
+    }
+    #col-1, #col-2{
+        max-width: initial;
+    }
+    #col-1{
+        display: flex;
+        justify-content: space-between;
+    }
+    #col-1 div:nth-child(odd){
+        background-color: initial;
+    }
+    #section, #break, #times{
+        flex-basis: 30%;
+    }
+    #section div, #break div, #times div{
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    #section div p, #break div p, #times div p{
+        flex-basis: 100%;
+        order: -1;
+    }
+    #section div button, #break div button, #times div button{
+        flex-basis: 50%;
+    }
+}
+@include media-breakpoint-only(sm) {  }
+@include media-breakpoint-only(md) {  }
+@include media-breakpoint-only(lg) {  }
+@include media-breakpoint-only(xl) {  }
